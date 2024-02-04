@@ -79,4 +79,19 @@ plt.Wine.Data.Test <- plt.Wine +
 plot(plt.Wine.Data.Train)
 
 #ggsave("Regresión entrenamiento.png", plot = plt.Wine.Data.Train, width = 6, height = 6)
-ggsave("Regresión prueba.png", plot = plt.Wine.Data.Test, width = 6, height = 6)
+#ggsave("Regresión prueba.png", plot = plt.Wine.Data.Test, width = 6, height = 6)
+
+##Validar la confianza en un modelo lineal##
+#Validar la confianza en un modelo lineal necesita de varios aspectos a considerar
+#1.- Coeficientes y significancia: valor de p < 0.05
+#2.- Valor R-cuadrado: un valor mas alto indica mejor ajuste del modelo a los datos observados
+#3.- Residuos y gráficos diagnósticos: Graficar los residuos frente a las vairables independientes
+#4.- Prueba F de significancia general: Evalua si el modelo en conjunto proporciona un mejor ajuste que un modelo sin variabilidad
+#5.- Intervalos de confianza: Proporcionan un rango del cual es probable que se encuentren los verdaderos valores de los coeficientes
+#6.- Validación cruzada: Dividiendo en conjuntos de entrenamiento y prueba
+#
+#Se siguen ciertos pasos para determinar la confianza de un modelo mediante los siguientes pasos
+#1.- Calculando el error estandar: (Desviacion estandar de la poblacion)/ raiz(Numero de observaciones de la muestra)
+#2.- Calcular los valores criticos de la distribucion t
+#3.- Calcular intervalos de confianza: media +/- margen de error
+#4.- Interpretar los intervalos
