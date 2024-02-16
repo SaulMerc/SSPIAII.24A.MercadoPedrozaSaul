@@ -55,9 +55,16 @@ print(MSE6)
 print(MSE7)
 
 #Gráfica del modelos#
-mdl.plt7 <- ggplot() + geom_point(aes(x = df.Startup.Train$R.D.Spend, 
-                        y = df.Startup.Train$Profit), colour = "blue") + 
+mdl.plt7.Train <- ggplot() + geom_point(aes(x = df.Startup.Train$R.D.Spend, 
+                        y = df.Startup.Train$Profit)) + 
                         geom_line(aes(x = df.Startup.Train$R.D.Spend,
                         y = predict(mdl.Poly7, newdata = df.Startup.Train), colour = "orange")) 
 
-plot(mdl.plt7)
+plot(mdl.plt7.Train)
+
+mdl.plt7.Test <- ggplot() + geom_point(aes(x = df.Startup.Test$R.D.Spend, 
+                        y = df.Startup.Test$Profit)) + 
+                        geom_line(aes(x = df.Startup.Test$R.D.Spend,
+                        y = predict(mdl.Poly7, newdata = df.Startup.Test), colour = "orange")) 
+
+plot(mdl.plt7.Test)
