@@ -61,7 +61,7 @@ mdl.plt7.Train <- ggplot() + geom_point(aes(x = df.Startup.Train$R.D.Spend,
                         geom_line(aes(x = df.Startup.Train$R.D.Spend,
                         y = predict(mdl.Poly7, newdata = df.Startup.Train), colour = "orange")) 
 
-plot(mdl.plt7.Train)
+mdl.plt7.Train
 
 mdl.plt7.Test <- ggplot() + geom_point(aes(x = df.Startup.Test$R.D.Spend, 
                         y = df.Startup.Test$Profit)) + 
@@ -69,7 +69,8 @@ mdl.plt7.Test <- ggplot() + geom_point(aes(x = df.Startup.Test$R.D.Spend,
                         y = predict(mdl.Poly7, newdata = df.Startup.Test), colour = "orange")) 
 
 plot(mdl.plt7.Test)
-
+ggsave(filename = "poli_train.jpg", plot = mdl.plt7.Train, units = "in", height = 7, width = 8)
+ggsave(filename = "poli_test.jpg", plot = mdl.plt7.Test, units = "in", height = 7, width = 8)
 #ELevar la formula determinada^#
 mdl.elev <- lm(formula = Profit ~ R.D.Spend + I(R.D.Spend^7), data = df.Startup.Train)
 summary(mdl.elev)
@@ -103,3 +104,8 @@ plt.grid
 
 
 ggsave(filename = "poli_svr.jpg", plot = plt.grid, units = "in", height = 7, width = 14)
+
+#install.packages("rmarkdown")
+#library(rmarkdown)
+
+#render('P1.3_Polinomial_SVR/MercadoPedrozaSaul.Rmd', output_format = 'html_document')
