@@ -58,6 +58,8 @@ print(MSE7)
 #Gráfica del modelos#
 mdl.plt7.Train <- ggplot() + geom_point(aes(x = df.Startup.Train$R.D.Spend, 
                         y = df.Startup.Train$Profit)) + 
+                        xlab("Gasto de investigación y desarrollo") +
+                        ylab("Utilidad") +
                         geom_line(aes(x = df.Startup.Train$R.D.Spend,
                         y = predict(mdl.Poly7, newdata = df.Startup.Train), colour = "orange")) 
 
@@ -65,6 +67,8 @@ mdl.plt7.Train
 
 mdl.plt7.Test <- ggplot() + geom_point(aes(x = df.Startup.Test$R.D.Spend, 
                         y = df.Startup.Test$Profit)) + 
+                        xlab("Gasto de investigación y desarrollo") +
+                        ylab("Utilidad") +
                         geom_line(aes(x = df.Startup.Test$R.D.Spend,
                         y = predict(mdl.Poly7, newdata = df.Startup.Test), colour = "orange")) 
 
@@ -89,16 +93,25 @@ svr.sig <- svm(formula = Profit ~ ., data = df.Startup.Train, kernel = "sigmoid"
 summary(svr.sig)
 
 #Gráfica#
-plt.svr <- ggplot() +
+plt.svr.Train <- ggplot() +
 theme_light()+
 geom_point(aes(x = df.Startup.Train$R.D.Spend,y = df.Startup.Train$Profit))+
 xlab("Gasto de investigación y desarrollo") +
 ylab("Utilidad") +
 geom_line(aes(x = df.Startup.Train$R.D.Spend, y = predict(svr.lin, newdata = df.Startup.Train)), colour = "darkblue", linewidth = 1.5)
 
-plt.svr
+plt.svr.Train
 
-plt.grid <- plot_grid(mdl.plt7.Train,mdl.plt7.Test,plt.svr, cnol = 2)
+plt.svr.Test <- ggplot() +
+theme_light()+
+geom_point(aes(x = df.Startup.Test$R.D.Spend,y = df.Startup.Test$Profit))+
+xlab("Gasto de investigación y desarrollo") +
+ylab("Utilidad") +
+geom_line(aes(x = df.Startup.Test$R.D.Spend, y = predict(svr.lin, newdata = df.Startup.Test)), colour = "darkblue", linewidth = 1.5)
+
+plt.svr.Test
+
+plt.grid <- plot_grid(mdl.plt7.Train,mdl.plt7.Test,plt.svr.Train, plt.svr.Test, cnol = 2)
 
 plt.grid
 
