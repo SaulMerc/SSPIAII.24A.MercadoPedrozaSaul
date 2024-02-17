@@ -28,3 +28,13 @@ if (!require(viridis)) {
     install.packages("viridis", dependencies = TRUE)
     library(viridis)
 }
+
+if (!require(e1071)) {
+    install.packages("e1071", dependencies = TRUE)
+    library(e1071)
+}
+
+if (!require(cowplot)) {
+    install.packages("cowplot", dependencies = TRUE)
+    library(cowplot)
+}

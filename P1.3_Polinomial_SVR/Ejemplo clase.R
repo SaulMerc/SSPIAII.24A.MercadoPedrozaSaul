@@ -1,6 +1,6 @@
 #getwd()
 #setwd("./SSPIAII.24A.MercadoPedrozaSaul")
-source("LibPreprocess.r")
+source("P1.3_Polinomial_SVR/LibPreprocess.r")
 
 set.seed(2002)
 options(scipen = 999)
