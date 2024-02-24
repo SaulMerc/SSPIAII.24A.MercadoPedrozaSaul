@@ -114,9 +114,8 @@ confusionMatrix(as.factor(Y.pred), as.factor(df.Social.Test$Purchased), mode = "
 confusionMatrix(matriz, positive = "1")$byClass
 
 #Conclusión
-#
-#
-#
-#
+# El realizar los cálculos de Accuracy, Presicion, Recall y F1 Score permiten tener una idea acerca de la calidad del modelo
+# resulta curioso ver como los cálculos realizados de manera manual varian mucho con respecto la que realiza la función de caret confusionMatrix
+# pudiendo ser el resultado de cosas como la implementación de las fórmulas o el ajuste de umbral que realiza caret para los datos
 #
 #
