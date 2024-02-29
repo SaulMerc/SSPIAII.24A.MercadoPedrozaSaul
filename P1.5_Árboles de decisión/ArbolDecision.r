@@ -1,3 +1,4 @@
+#Saúl Mercado Pedroza#
 source("./Datasets & Lib/LibPreprocess.r")
 
 set.seed(2002)
@@ -70,3 +71,27 @@ confusionMatrix(as.factor(Y.pred.Forest), as.factor(df.Social$Purchased), mode =
 ##De acuerdo con el conjunto de datos proporcionado resulto ser más exacto el modelo Random Forest ya que indica un valor
 ##F1 para la clase 0 de 0.95, mientras que el modelo de árbol de decisión indica un valor de 0.94
 
+#Graficar#
+graphics <- function(dataframe, model) {
+    set <- dataframe
+
+    X1 <- seq(min(set[,1]) -1, max(set[,1]) + 1, by = 0.1)
+    X2 <- seq(min(set$EstimatedSalary) -1, max(set$EstimatedSalary) + 1, by = 0.1)
+
+    grid.set <- expand.grid(X1, X2)
+
+    colnames(grid.set) <- c("Age", "EstimatedSalary")
+
+    prob.set <- predict(model, newdata = grid.set)
+    Y.grid <- ifelse(prob.set > 0.5, 1, 0)
+    #Graficar#
+    plot(set[,-3], main = "Gráfico de Clasificación", xlab = "Edad", ylab = "Comprado", xlim = range(X1), ylim = range(X2)) 
+    contour(X1,X2, matrix(as.numeric(Y.grid), length(X1), length(X2)), add = TRUE)
+
+    points(grid.set, pch = "_", col = ifelse(Y.grid == 1, "gold", "red"))
+
+    points(set, pch = 21, bg = ifelse(set$Purchased == 1, "orange", "green"))
+}
+
+graphics(df.Social, mdl.Forest)
+graphics(df.Social, mdl.Tree)
