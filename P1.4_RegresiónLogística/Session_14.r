@@ -77,9 +77,9 @@ Y.grid <- ifelse(prob.set > 0.5, 1, 0)
 plot(set[,-3], main = "Gráfico de Clasificación", xlab = "Edad", ylab = "Salario estimado", xlim = range(X1), ylim = range(X2)) 
 contour(X1,X2, matrix(as.numeric(Y.grid), length(X1), length(X2)), add = TRUE)
 
-points(grid.set, pch = ".", col = ifelse(Y.grid == 1, "red", "blue"))
+points(grid.set, pch = "-", col = ifelse(Y.grid == 1, "gold", "black"))
 
-points(set, pch = 21, bg = ifelse(set$Purchased == 1, "red", "blue"))
+points(set, pch = 21, bg = ifelse(set$Purchased == 1, "orange", "green"))
 
 #Evaluación del modelo#
 #Check imbalanced#
